@@ -33,8 +33,8 @@ if __name__ == "__main__":
 
     val_pwds = 0
     for i in data:
-        pol = i.split(":")[0]
-        pwd = i.split(":")[1]
+        pol = i.split(":")[0].strip()
+        pwd = i.split(":")[1].strip()
         if is_valid(pol, pwd):
             val_pwds += 1
 
