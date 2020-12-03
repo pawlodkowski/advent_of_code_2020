@@ -13,11 +13,12 @@ how many trees would you encounter?
 """
 
 import numpy as np
+import math
 
-MOVEMENTS = {"right": 3, "down": 1}
+MOVEMENTS = {"right": 1, "down": 1}
 
 
-def extend_map(right: int):
+def extend_map(map, right: int):
     """
     Extend the map horizontally (i.e. repeat the terrain) by a minimum number of times needed
     such that the toboggan rider does not go out of bounds (i.e. IndexError) before reaching
@@ -27,9 +28,10 @@ def extend_map(right: int):
     For example, if the rider tends to move right by a lot each time,
     then the map needs to be larger to provide more room.
     """
-    map_extend_interval = len(data_array[0]) // right
-    extension = data_array.shape[0] // map_extend_interval
-    return np.hstack([data_array] * extension)
+    map = map.copy()
+    map_extend_interval = len(map[0]) // right
+    extension = math.ceil(map.shape[0] / map_extend_interval)
+    return np.hstack([map] * extension)
 
 
 if __name__ == "__main__":
@@ -38,7 +40,7 @@ if __name__ == "__main__":
         data = f.read()
     contents = [list(row) for row in data.split("\n")]
     data_array = np.array(contents)
-    data_array = extend_map(MOVEMENTS["right"])
+    data_array = extend_map(data_array, MOVEMENTS["right"])
 
     y = 0
     x = 0
