@@ -7,8 +7,6 @@ Exactly one of these positions must contain the given letter.
 Other occurrences of the letter are irrelevant for the purposes of policy enforcement.
 
 How many passwords are valid according to the new interpretation of the policies?
-
-PROBLEM: is_valid('3-4 b', 'wgzbpwpbj') returns True individually, but False in the loop...huh?
 """
 
 import re
