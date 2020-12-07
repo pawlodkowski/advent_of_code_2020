@@ -2,8 +2,9 @@
 Part 1 of https://adventofcode.com/2020/day/7
 """
 
-from colordict import ColorDict
 import collections
+
+from colordict import ColorDict
 
 MY_BAG_COLOR = "shiny gold"
 
